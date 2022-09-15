@@ -1,1 +1,21 @@
-ECHO is on.
+body {
+    text-align: center;
+    margin: 0px;
+}
+
+h1 {
+    color: #121619;
+}
+
+p {
+    color: #121619;
+    font-size: 22px;
+}
+
+canvas {
+    border: 1px solid black;
+}
+
+span {
+    margin: 2px;
+}
