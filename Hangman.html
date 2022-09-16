@@ -16,11 +16,14 @@
     <div id="gameArea">
         <canvas id="gameCanvas"></canvas>
         <br><br>
-        <h1></h1>
+        <h1 id="censoredWord"></h1>
         <p id="displayText">Type in a word that the players have to guess</p>
-        <input id="wordInput" type="text" minlength="2" placeholder="Type in a word" style="width:300px">
+        <input id="userInput" type="text" placeholder="Type in a word" style="width:300px" >
         <br><br>
-        <button id="startButton" class="btn btn-secondary" onclick="getWord()">Start</button>
+        <button id="button" class="btn btn-secondary" onclick="startGame()">Start</button>
+        <br><br>
+        <p id="guess" hidden>Guessed letters below</p>
+        <h2 id="guessedLetters"></h2>
     </div>
     <script type="text/javascript" src="js-script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
