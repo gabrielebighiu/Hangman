@@ -1,5 +1,3 @@
-
-
 let word = "";
 let guessedLetters = [];
 let livesLeft = 6;
