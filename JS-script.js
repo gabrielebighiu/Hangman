@@ -1,27 +1,14 @@
+
+
 let word = "";
 let guessedLetters = [];
 let livesLeft = 6;
 const displayText = document.getElementById("displayText");
-// Variables below are used to draw inside the canvas
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = 600;
-canvas.height = 300;
 
 // Event listener so that when button is clicked, the input box clears
 document.getElementById("button").addEventListener("click", function clearInput() {
     document.getElementById("userInput").value = "";
 })
-
-// Draws the gallow when the page loads
-function drawGallow() {
-    ctx.fillRect(180, 280, 240, 3);
-    ctx.fillRect(230, 40, 3, 240);
-    ctx.fillRect(230, 40, 100, 3);
-    ctx.fillRect(330, 40, 3, 40);
-    // Line below will allow the rest of the hangmand to be drawn when the time comes
-    ctx.beginPath();
-}
 
 // Retrieves the word given by the user
 function getWord() {
@@ -50,35 +37,6 @@ function updateCensoredWord(letter) {
     }
 }
 
-function updateHangman() {
-    // Draws:
-    if (livesLeft == 5) {
-        // Head
-        ctx.arc(331, 100, 20, 0, Math.PI * 2, false);
-    } else if (livesLeft == 4) {
-        // Body 
-        ctx.moveTo(331, 120);
-        ctx.lineTo(331, 210);
-    } else if (livesLeft == 3) {
-        // Left Arm
-        ctx.moveTo(331, 130);
-        ctx.lineTo(300, 170);
-    } else if (livesLeft == 2) {
-        // Right Arm
-        ctx.moveTo(331, 130);
-        ctx.lineTo(362, 170);
-    } else if (livesLeft == 1) {
-        // Left Leg
-        ctx.moveTo(331, 210);
-        ctx.lineTo(300, 250);
-    } else if (livesLeft == 0) {
-        // Right Leg
-        ctx.moveTo(331, 210);
-        ctx.lineTo(362, 250);
-    }
-    ctx.stroke();
-}
-
 // Checks the letter given by user
 function checkLetter() {
     let letter = document.getElementById("userInput").value.toUpperCase();
@@ -100,7 +58,7 @@ function checkLetter() {
         guessedLetters.push(letter);
         updateGuessedLettersList(letter);
         --livesLeft;
-        updateHangman();
+        updateHangman(livesLeft);
         checkGameStatus();
     }
 }
@@ -113,7 +71,7 @@ function updateGuessedLettersList(letter) {
 
 // Checks if the game is won or lost
 function checkGameStatus() {
-    // If player runs out of lives and the full hangman gets drawn the lose
+    // If player runs out of lives and the full hangman gets drawn the player loses
     if (livesLeft == 0) {
         window.alert("You lost! Refresh page to play again");
         return true;
